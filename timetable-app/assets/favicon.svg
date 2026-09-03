@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Class timetable">
+  <rect width="64" height="64" rx="10" fill="#0d1117"/>
+  <rect x="7.5" y="7.5" width="49" height="49" rx="6" fill="none" stroke="#56c9a4" stroke-width="1.4" opacity="0.55"/>
+  <g stroke="#63768b" stroke-width="3" stroke-linecap="round">
+    <line x1="17" y1="21" x2="47" y2="21"/>
+    <line x1="17" y1="30" x2="40" y2="30"/>
+    <line x1="17" y1="48" x2="36" y2="48"/>
+  </g>
+  <line x1="17" y1="39" x2="42" y2="39" stroke="#56c9a4" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="47" cy="39" r="3.8" fill="#ff7f63"/>
+</svg>

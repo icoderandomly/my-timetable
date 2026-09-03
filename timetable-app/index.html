@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="terminal">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Class Timetable — Real-Time Dashboard</title>
+<meta name="description" content="Live class dashboard for B.Tech CSE (AI &amp; ML), Semester 3 — current class, countdowns and the full weekly timetable.">
+<meta name="theme-color" content="#0d1117">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to dashboard</a>
+
+<div class="page">
+
+  <!-- ══════════════════════════ MASTHEAD ══════════════════════════ -->
+  <header class="masthead panel ornate">
+    <span class="cornerset" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+
+    <div class="masthead__brand">
+      <p class="eyebrow" id="metaLine">K.R. Mangalam University</p>
+      <h1 class="masthead__title" id="titleLine">Class <span>Timetable</span></h1>
+      <p class="masthead__tagline" id="taglineLine">Live class dashboard</p>
+    </div>
+
+    <div class="masthead__clock">
+      <p class="clock__date" id="clockDate">—</p>
+      <p class="clock__time" id="clockTime">--:--:--</p>
+      <p class="clock__meridiem" id="clockMeridiem">&nbsp;</p>
+      <p class="clock__week" id="clockWeek">&nbsp;</p>
+    </div>
+
+    <div class="masthead__tools">
+      <div class="themes" role="group" aria-label="Theme">
+        <span class="themes__label">Theme</span>
+        <button type="button" class="chip" data-theme-id="terminal">Terminal</button>
+        <button type="button" class="chip" data-theme-id="blueprint">Blueprint</button>
+        <button type="button" class="chip" data-theme-id="departure">Departure</button>
+        <button type="button" class="chip" data-theme-id="manuscript">Manuscript</button>
+      </div>
+      <button type="button" class="tool" id="notifyToggle" aria-pressed="false">
+        <span class="tool__glyph" aria-hidden="true">◉</span>
+        <span class="tool__label" id="notifyLabel">Class reminders</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════ TABS ══════════════════════════ -->
+  <nav class="tabs" aria-label="Sections">
+    <button type="button" class="tab is-active" data-view="today" aria-current="page">Today</button>
+    <button type="button" class="tab" data-view="week">Weekly timetable</button>
+    <button type="button" class="tab" data-view="subjects">Courses</button>
+  </nav>
+
+  <noscript>
+    <p class="panel">This dashboard reads your device clock with JavaScript. Turn JavaScript on to
+    see the live class, countdowns and weekly timetable.</p>
+  </noscript>
+
+  <main id="main">
+
+    <!-- ═════════════════════ VIEW · TODAY ═════════════════════ -->
+    <section class="view" id="view-today">
+
+      <!-- Live class panel -->
+      <article class="panel leaf ornate hero" id="heroCard">
+        <span class="cornerset" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <p class="loading">Reading the clock…</p>
+      </article>
+
+      <!-- Next class -->
+      <article class="panel next" id="nextCard"></article>
+
+      <!-- Day selector -->
+      <section class="daybar" aria-label="Choose a day">
+        <div class="daybar__rule"><span class="rule-glyph" aria-hidden="true"></span></div>
+        <div class="daybar__buttons" id="dayButtons"></div>
+      </section>
+
+      <!-- Today's schedule -->
+      <section class="panel schedule" aria-labelledby="scheduleHeading">
+        <header class="panel__head">
+          <h2 class="panel__title" id="scheduleHeading">Schedule</h2>
+          <p class="panel__sub" id="scheduleDate">—</p>
+        </header>
+        <ol class="ledger" id="ledger"></ol>
+      </section>
+    </section>
+
+    <!-- ═════════════════════ VIEW · WEEK ═════════════════════ -->
+    <section class="view" id="view-week" hidden>
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title">The full week</h2>
+          <p class="panel__sub" id="weekSub">—</p>
+        </header>
+
+        <!-- desktop / tablet grid -->
+        <div class="weekgrid" id="weekGrid" role="table" aria-label="Weekly timetable"></div>
+
+        <!-- mobile stack -->
+        <div class="weekstack" id="weekStack"></div>
+      </section>
+    </section>
+
+    <!-- ═════════════════════ VIEW · COURSES ═════════════════════ -->
+    <section class="view" id="view-subjects" hidden>
+      <section class="panel">
+        <header class="panel__head">
+          <h2 class="panel__title">Courses of this term</h2>
+          <p class="panel__sub">Weekly load counted from your timetable</p>
+        </header>
+        <div class="courses" id="courses"></div>
+      </section>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="colophon">
+    <span class="rule-glyph" aria-hidden="true"></span>
+    <p id="colophonLine">—</p>
+    <p class="colophon__fine">Times follow this device's clock. Edit <code>js/timetable.js</code> to change the schedule.</p>
+  </footer>
+
+</div>
+
+<script src="js/timetable.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
